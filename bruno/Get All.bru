@@ -1,0 +1,32 @@
+meta {
+  name: Get All
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8000/musicas
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+}
+
+tests {
+  test("should be able list musics", () => {
+    const data = res.body
+    expect(data).to.be.an("array")
+    
+    const music = data[0]
+    
+    if (music) {
+      expect(music.id).to.exist
+      expect(music.title).to.be.a("string")
+      expect(music.artist).to.be.a("string")
+      expect(music.genre).to.be.a("string")
+      expect(music.duration).to.be.a("number")
+    }
+  })
+}

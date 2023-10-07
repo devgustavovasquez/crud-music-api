@@ -1,0 +1,21 @@
+meta {
+  name: Update
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8000/musicas/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "id": 1,
+      "title": "Uma vida é pouco pra te amar",
+      "artist": "Izaac Santos",
+      "genre": "Worship",
+      "duration": 2.33
+  }
+}
